@@ -104,16 +104,13 @@
         .models { padding: 4rem 5% 8rem; text-align: center; }
         .models h2 { font-size: 3rem; margin-bottom: 4rem; font-weight: 700; letter-spacing: -1px; color: var(--text-color); }
         
-        /* GÜNCELLEME: Kartların yan yana daha kibar durması için max-width düşürüldü ve boşluk ayarlandı */
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
         
         .card { background-color: var(--card-bg); border-radius: 24px; overflow: hidden; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s, box-shadow 0.4s; display: flex; flex-direction: column; text-align: left; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 10px 30px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
         .card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 15px 40px rgba(255, 117, 140, 0.2); }
         
-        /* GÜNCELLEME: Resim boyu daha zarif bir görünüme kavuşması için 300px'e çekildi */
         .card img { width: 100%; height: 300px; object-fit: cover; }
         
-        /* GÜNCELLEME: İç boşluklar 30px'e düşürüldü */
         .card-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         
         .card h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.5px; color: var(--text-color); }
@@ -319,7 +316,6 @@
                     </div>
                 </div>
 
-                <!-- Niasinamid Serum -->
                 <div class="card reveal">
                     <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80" alt="Niasinamid Serum">
                     <div class="card-content">
@@ -331,7 +327,6 @@
                     </div>
                 </div>
 
-                <!-- Göz Kremi GÖRSELİ GÜNCELLENDİ -->
                 <div class="card reveal">
                     <img src="https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?auto=format&fit=crop&w=800&q=80" alt="Göz Kremi">
                     <div class="card-content">
@@ -387,7 +382,8 @@
                     </div>
                     <h3>Biyoteknolojik Cilt Bakımı: Geleceğin Formülleri</h3>
                     <p>Doğayı tüketmeden, laboratuvar ortamında geliştirilen vegan ve biyolojik olarak cilde en uyumlu moleküllerin devrimi.</p>
-                    <a href="#" class="read-more">Makaleyi Oku <i class="fas fa-arrow-right"></i></a>
+                    <!-- YENİ LİNK EKLENDİ -->
+                    <a href="wellness.html" class="read-more">Makaleyi Oku <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <div class="blog-card reveal">
@@ -397,7 +393,8 @@
                     </div>
                     <h3>Kış Aylarında Cilt Bariyerini Korumak İçin 5 Altın Kural</h3>
                     <p>Soğuk hava, rüzgar ve nemsiz ortamların cildinize verdiği hasarı minimuma indirmek için günlük rutininize eklemeniz gerekenler.</p>
-                    <a href="#" class="read-more">Makaleyi Oku <i class="fas fa-arrow-right"></i></a>
+                    <!-- YENİ LİNK EKLENDİ -->
+                    <a href="rutin.html" class="read-more">Makaleyi Oku <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <div class="blog-card reveal">
@@ -407,7 +404,8 @@
                     </div>
                     <h3>Cilt Mikrobiyomu Neden Yeni Odak Noktamız?</h3>
                     <p>Sadece cildi temizlemek yetmez. Cilt yüzeyindeki yararlı bakterileri besleyen prebiyotik içeriklerin önemi.</p>
-                    <a href="#" class="read-more">Makaleyi Oku <i class="fas fa-arrow-right"></i></a>
+                    <!-- YENİ LİNK EKLENDİ -->
+                    <a href="trendler.html" class="read-more">Makaleyi Oku <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -507,7 +505,7 @@
             document.querySelector('.survey-section p.subtitle').style.display = 'block';
         }
 
-        // --- 5. ÜRÜN MODAL İŞLEMLERİ (YENİ ÜRÜNLER VE GÜNCEL GÖRSELLER) ---
+        // --- 5. ÜRÜN MODAL İŞLEMLERİ ---
         const productData = {
             'hyaluronik': {
                 title: 'Hyalüronik Asit Serum',
@@ -546,7 +544,7 @@
             },
             'gozkremi': {
                 title: 'Kafein & Peptit Göz Kremi',
-                img: 'https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?auto=format&fit=crop&w=800&q=80', // Görsel güncellendi
+                img: 'https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?auto=format&fit=crop&w=800&q=80',
                 desc: 'Göz altı torbalanmalarını ve koyu halka görünümünü azaltmaya yardımcı olur. İçeriğindeki peptitler ile ince çizgi görünümünü pürüzsüzleştirir.',
                 features: ['%5 Kafein solüsyonu', 'Çoklu peptit kompleksi', 'Hızlı emilen jel-krem form', 'Dermatolojik ve oftalmolojik olarak test edilmiştir'],
                 where: 'Tüm yetkili eczanelerde ve online mağazamızda.'
