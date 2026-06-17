@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biyoteknolojik Cilt Bakımı | Glow & Care</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        :root { 
+            --primary-color: #ff758c; 
+            --primary-hover: #ff5c77; 
+            --bg-color: #fdfbf7; 
+            --card-bg: #ffffff; 
+            --text-color: #2c3e50; 
+            --text-muted: #6c7a89; 
+            --border-color: rgba(255, 117, 140, 0.15); 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        
+        body { color: var(--text-color); line-height: 1.7; background-color: var(--bg-color); overflow-x: hidden; }
+
+        header { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .nav-logo { font-size: 1.8rem; color: var(--primary-color); } 
+        .logo-text { font-size: 1.3rem; font-weight: 700; color: var(--text-color); letter-spacing: 0.5px; }
+        .logo-text span { color: var(--primary-color); }
+        
+        .back-btn { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; transition: color 0.3s; }
+        .back-btn:hover { color: var(--primary-hover); }
+
+        .article-hero {
+            width: 100%; height: 70vh; min-height: 500px;
+            /* Arka plan görseli eklendi */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 60%, #fdfbf7 100%), url('https://images.unsplash.com/photo-1540553016722-983e48a2cd10?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6rem; text-align: center; margin-top: 60px; 
+        }
+
+        .article-header-content { max-width: 800px; padding: 0 20px; }
+        .article-meta { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 1.5rem; font-size: 1rem; font-weight: 700; }
+        .category { color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; background: rgba(255, 255, 255, 0.1); padding: 5px 15px; border-radius: 20px; backdrop-filter: blur(5px); }
+        .date { color: #e2e8f0; font-weight: 400; }
+
+        .article-title { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: #ffffff; letter-spacing: -1px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .article-subtitle { font-size: 1.3rem; color: #cbd5e1; font-weight: 400; line-height: 1.6; }
+
+        .article-body-wrapper { max-width: 850px; margin: -4rem auto 4rem auto; padding: 0 20px; position: relative; z-index: 10; }
+        .article-body { background-color: var(--card-bg); padding: 50px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: 0 20px 50px rgba(0,0,0,0.08); font-size: 1.15rem; }
+
+        .article-body h2 { font-size: 2rem; color: var(--text-color); margin: 3rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(255, 117, 140, 0.2); }
+        .article-body h3 { font-size: 1.4rem; color: var(--primary-color); margin: 2rem 0 0.5rem; }
+        .article-body p { margin-bottom: 1.5rem; color: #4a5568; }
+        .article-body strong { color: var(--text-color); }
+        .article-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; color: #4a5568; }
+        .article-body li { margin-bottom: 0.8rem; }
+
+        .highlight-box { background-color: rgba(255, 117, 140, 0.05); border-left: 4px solid var(--primary-color); padding: 25px; border-radius: 0 16px 16px 0; margin: 2.5rem 0; font-style: italic; color: var(--text-color); font-weight: 500; }
+
+        /* Yorumlar CSS */
+        .comments-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border-color); }
+        .comments-section h3 { font-size: 1.6rem; color: var(--text-color); margin-bottom: 2rem; }
+        .comment-form { display: flex; gap: 15px; margin-bottom: 3rem; background: rgba(255, 117, 140, 0.03); padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); }
+        .avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .input-group { flex-grow: 1; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .input-group input { padding: 14px 20px; border: 1px solid #e2e8f0; border-radius: 30px; outline: none; font-size: 1rem; transition: all 0.3s; background: #fff; }
+        .input-group input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(255, 117, 140, 0.1); }
+        .name-input { flex: 1; min-width: 150px; max-width: 200px; }
+        .comment-input { flex: 3; min-width: 200px; }
+        .submit-btn { padding: 12px 28px; background-color: var(--primary-color); color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3); }
+        .submit-btn:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 117, 140, 0.4); }
+        .comments-list { display: flex; flex-direction: column; gap: 20px; }
+        .comment { display: flex; gap: 15px; padding: 20px; background: #fff; border-radius: 16px; border: 1px solid #f1f5f9; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .comment-content { flex-grow: 1; }
+        .comment-content h4 { font-size: 1.05rem; color: var(--text-color); margin-bottom: 5px; display: flex; align-items: center; justify-content: space-between; }
+        .comment-date { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+        .comment-content p { margin: 0; font-size: 1rem; color: #4a5568; line-height: 1.5; }
+        .new-comment { animation: slideDown 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; background: rgba(255, 117, 140, 0.05); border-color: rgba(255, 117, 140, 0.2); }
+        
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        footer { text-align: center; padding: 3rem 20px; border-top: 1px solid var(--border-color); color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            .article-hero { height: 60vh; padding-bottom: 4rem; }
+            .article-title { font-size: 2.2rem; }
+            .article-subtitle { font-size: 1.1rem; }
+            .article-body-wrapper { margin-top: -3rem; }
+            .article-body { padding: 30px 20px; font-size: 1.05rem; }
+            .input-group { flex-direction: column; align-items: stretch; }
+            .name-input, .comment-input { max-width: 100%; }
+            .submit-btn { align-self: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <i class="fas fa-spa nav-logo"></i>
+            <span class="logo-text">Glow & <span>Care</span></span>
+        </a>
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Ana Sayfa</a>
+    </header>
+
+    <section class="article-hero">
+        <div class="article-header-content">
+            <div class="article-meta">
+                <span class="category">Wellness</span>
+                <span class="date">6 Haziran 2026</span>
+            </div>
+            <h1 class="article-title">Biyoteknolojik Cilt Bakımı: Geleceğin Formülleri</h1>
+            <p class="article-subtitle">Doğayı tüketmeden, laboratuvar ortamında geliştirilen vegan ve biyolojik olarak cilde en uyumlu moleküllerin devrimi.</p>
+        </div>
+    </section>
+
+    <main class="article-body-wrapper">
+        <article class="article-body">
+            <p>Güzellik endüstrisinde uzun yıllardır "ne kadar doğal, o kadar iyi" algısı hakimdi. Ancak doğadan sürekli bir şeyler koparmak hem gezegenimiz için sürdürülebilir değil hem de her doğal içerik cildimiz için güvenli anlamına gelmiyor. İşte tam bu noktada sahneye <strong>Biyoteknolojik Cilt Bakımı</strong> çıkıyor.</p>
+
+            <div class="highlight-box">
+                Biyoteknolojik cilt bakımı; doğadaki bitkilerin, alglerin veya faydalı bakterilerin DNA yapılarının incelenerek, laboratuvar ortamında birebir aynı ve daha stabil kopyalarının üretilmesidir.
+            </div>
+
+            <h2>Neden Laboratuvar Üretimi?</h2>
+            <p>Bir gül özü elde etmek için tonlarca gül yaprağı hasat etmek yerine, laboratuvarda o hücreyi çoğaltmak çok daha çevreci bir yaklaşımdır. Üstelik toprakta yetişen bir bitki; tarım ilacına, hava kirliliğine veya iklim değişikliklerine maruz kalırken, laboratuvarda üretilen bir molekül <strong>yüzde yüz saftır.</strong></p>
+            
+            <h3>Biyoteknolojinin Cildinize Faydaları:</h3>
+            <ul>
+                <li><strong>Alerji Riski Düşüktür:</strong> Doğal bitki özleri genellikle alerjen barındırır. Laboratuvar ortamında üretilen içerikler, alerjiye sebep olan proteinlerden arındırılır.</li>
+                <li><strong>Yüksek Performans:</strong> Biyomimetik (doğayı taklit eden) içerikler, cildin kendi biyolojisine çok benzer. Bu sayede cilt tarafından yabancı bir madde olarak algılanmaz, hızla emilir ve etki gösterir.</li>
+                <li><strong>Sürdürülebilirlik:</strong> Doğal kaynakları (örneğin tükenmekte olan bitki türlerini veya köpekbalıklarından elde edilen skualeni) korumak için bitki kök hücrelerinden vegan alternatifler üretilir.</li>
+            </ul>
+
+            <h2>Popüler Biyoteknolojik İçerikler Nelerdir?</h2>
+            <p><strong>1. Vegan Skualan (Squalane):</strong> Eskiden hayvanlardan elde edilen veya zeytinden üretimi zor olan skualan, artık biyoteknoloji sayesinde şeker kamışı kullanılarak fermente ediliyor. Cildin doğal nem bariyerini mükemmel şekilde onarıyor.</p>
+            <p><strong>2. Biyomimetik Peptitler:</strong> Cildin kolajen üretmesini tetikleyen bu "haberci" proteinler, laboratuvarlarda cildin kendi peptit zincirlerine birebir uyumlu olarak sentezleniyor.</p>
+            <p><strong>3. Fermente Ekstraktlar:</strong> Probiyotik bakteriler kullanılarak bitkisel içeriklerin fermente edilmesi, o içeriğin cilde nüfuz edebilecek kadar küçük parçalara (moleküllere) ayrılmasını sağlar. Etki gücü anında artar.</p>
+
+            <h2>Gelecek Laboratuvarda!</h2>
+            <p>Kısacası, biyoteknolojik cilt bakımı; bilimin kusursuzluğu ile doğanın bilgeliğini bir araya getiriyor. Hem daha etkili sonuçlar almak hem de dünyamızın kaynaklarını korumak istiyorsak, geleceğin formüllerine banyomuzda yer açmanın vakti geldi.</p>
+            
+            <section class="comments-section">
+                <h3 id="commentCount">Yorumlar (2)</h3>
+                <div class="comment-form">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profilin" class="avatar">
+                    <div class="input-group">
+                        <input type="text" id="nameInput" class="name-input" placeholder="İsim Soyisim">
+                        <input type="text" id="commentInput" class="comment-input" placeholder="Bu rehber hakkında ne düşünüyorsun?">
+                        <button type="button" class="submit-btn" id="submitComment">Gönder</button>
+                    </div>
+                </div>
+
+                <div class="comments-list" id="commentsList">
+                    <div class="comment">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Selin" class="avatar">
+                        <div class="comment-content">
+                            <h4>Selin Kaya <span class="comment-date">8 Haziran 2026</span></h4>
+                            <p>Doğal ürünlerin daha çok alerji yaptığına inanamıyorum, gerçekten aydınlatıcı bir yazı olmuş. Vegan skualan favorim!</p>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Burak" class="avatar">
+                        <div class="comment-content">
+                            <h4>Burak Aydın <span class="comment-date">7 Haziran 2026</span></h4>
+                            <p>Sürdürülebilirlik kısmı çok önemli. Gezegenimize zarar vermeden cilt bakımı yapabilmek harika bir teknoloji.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Glow & Care Cosmetics. Doğal Işıltını Keşfet.</p>
+    </footer>
+
+    <script>
+        document.getElementById('submitComment').addEventListener('click', function() {
+            const nameInput = document.getElementById('nameInput');
+            const commentInput = document.getElementById('commentInput');
+            let userName = nameInput.value.trim();
+            const text = commentInput.value.trim();
+            if (userName === "") userName = "Anonim Kullanıcı";
+            
+            if(text !== "") {
+                const commentsList = document.getElementById('commentsList');
+                const newComment = document.createElement('div');
+                newComment.className = 'comment new-comment';
+                newComment.innerHTML = `
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="${userName}" class="avatar">
+                    <div class="comment-content">
+                        <h4>${userName} <span class="comment-date">Şimdi</span></h4>
+                        <p>${text}</p>
+                    </div>
+                `;
+                commentsList.insertBefore(newComment, commentsList.firstChild);
+                commentInput.value = ""; nameInput.value = "";
+                const countElement = document.getElementById('commentCount');
+                const currentCount = parseInt(countElement.innerText.match(/\d+/)[0]);
+                countElement.innerText = `Yorumlar (${currentCount + 1})`;
+            }
+        });
+        document.getElementById('commentInput').addEventListener('keypress', function (e) { if (e.key === 'Enter') document.getElementById('submitComment').click(); });
+        document.getElementById('nameInput').addEventListener('keypress', function (e) { if (e.key === 'Enter') document.getElementById('submitComment').click(); });
+    </script>
+</body>
+</html>
